@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BloodLink - Emergency Blood Donor Finder and Voluntary Blood Donation Network connecting hospitals, patients, and donors when every minute matters.">
+    <meta name="keywords" content="blood donor, emergency blood, find blood, blood donation, hospital blood request, voluntary blood donors">
+    <meta name="theme-color" content="#991B1B">
+    <title>BloodLink | Emergency Blood Donor Finder & Donation Network</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Live Emergency Alert Ticker -->
+    <aside class="emergency-ticker" role="region" aria-label="Emergency Live Ticker">
+        <div class="ticker-content">
+            <span class="ticker-badge"><span class="pulse-dot"></span> LIVE NETWORK</span>
+            <div class="ticker-text" id="tickerText">
+                🚨 Urgent: 2 Units O- required at Apollo Greams Road, Chennai • 1 Unit B+ needed at Fortis Hospital, Bengaluru • Active emergency response network operating 24/7
+            </div>
+            <button class="sound-toggle-btn" id="soundToggleBtn" title="Toggle Emergency Chime Audio">
+                <span id="soundIcon">🔔</span> <span class="sound-label">Alert Sound: ON</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Navigation Bar -->
+    <header class="header" id="header">
+        <div class="container nav-container">
+            <a href="#home" class="logo" aria-label="BloodLink Homepage">
+                <span class="logo-icon">🩸</span>
+                <span class="logo-text">Blood<span class="logo-highlight">Link</span></span>
+            </a>
+
+            <nav class="nav-menu" id="navMenu">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
+                    <li class="nav-item"><a href="#how-it-works" class="nav-link">How It Works</a></li>
+                    <li class="nav-item"><a href="#find-donor" class="nav-link">Find Donor</a></li>
+                    <li class="nav-item"><a href="#register" class="nav-link">Register</a></li>
+                    <li class="nav-item"><a href="#emergency" class="nav-link nav-emergency">🚨 Emergency</a></li>
+                    <li class="nav-item"><a href="#availability" class="nav-link">Donor Hub</a></li>
+                    <li class="nav-item"><a href="#blood-groups" class="nav-link">Blood Groups</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="#emergency" class="btn btn-emergency-nav pulse-anim">
+                    <span class="btn-icon">⚡</span> Rapid Request
+                </a>
+                <button class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 2. Hero Section -->
+        <section class="hero-section" id="home">
+            <!-- Animated Background Particles Container -->
+            <div class="blood-particles-container" id="particlesContainer" aria-hidden="true"></div>
+            
+            <div class="container hero-container">
+                <div class="hero-grid">
+                    <div class="hero-content">
+                        <div class="hero-badge">
+                            <span class="heartbeat-icon">❤️</span> Voluntary Blood Donation Platform
+                        </div>
+                        <h1 class="hero-title">
+                            Find Blood Donors When <span class="highlight-crimson">Every Minute Matters</span>
+                        </h1>
+                        <p class="hero-subtitle">
+                            BloodLink connects voluntary blood donors with hospitals, patients, and families during critical medical emergencies to save lives faster and safely.
+                        </p>
+                        
+                        <div class="hero-cta-group">
+                            <a href="#find-donor" class="btn btn-primary btn-lg shadow-glow">
+                                <span>🔍 Find a Donor</span>
+                            </a>
+                            <a href="#register" class="btn btn-outline btn-lg">
+                                <span>❤️ Become a Donor</span>
+                            </a>
+                            <a href="#emergency" class="btn btn-danger-soft btn-lg">
+                                <span>🚨 Emergency Request</span>
+                            </a>
+                        </div>
+
+                        <!-- Live Fast Metric Bar -->
+                        <div class="hero-quick-stats">
+                            <div class="quick-stat-item">
+                                <span class="quick-stat-num">~8 Min</span>
+                                <span class="quick-stat-label">Avg Match Time</span>
+                            </div>
+                            <div class="quick-stat-divider"></div>
+                            <div class="quick-stat-item">
+                                <span class="quick-stat-num">100%</span>
+                                <span class="quick-stat-label">Voluntary Donors</span>
+                            </div>
+                            <div class="quick-stat-divider"></div>
+                            <div class="quick-stat-item">
+                                <span class="quick-stat-num">Privacy Shield</span>
+                                <span class="quick-stat-label">Masked Contacts</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hero-card-column">
+                        <!-- Quick Emergency Search Box Widget in Hero -->
+                        <div class="hero-widget-card glass-panel">
+                            <div class="widget-header">
+                                <div class="widget-title-wrap">
+                                    <span class="widget-pulse-indicator"></span>
+                                    <h3 class="widget-title">Quick Blood Matcher</h3>
+                                </div>
+                                <span class="widget-badge">Instant Finder</span>
+                            </div>
+                            <p class="widget-sub">Select blood group and city to locate nearby voluntary donors immediately.</p>
+                            
+                            <form id="heroQuickSearchForm" class="hero-quick-form">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="heroBloodGroup">Blood Group</label>
+                                        <div class="select-wrapper">
+                                            <select id="heroBloodGroup" required>
+                                                <option value="" disabled selected>Select Group</option>
+                                                <option value="A+">A+ (A Positive)</option>
+                                                <option value="A-">A- (A Negative)</option>
+                                                <option value="B+">B+ (B Positive)</option>
+                                                <option value="B-">B- (B Negative)</option>
+                                                <option value="AB+">AB+ (AB Positive)</option>
+                                                <option value="AB-">AB- (AB Negative)</option>
+                                                <option value="O+">O+ (O Positive)</option>
+                                                <option value="O-">O- (Universal Donor)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="heroCity">City</label>
+                                        <div class="select-wrapper">
+                                            <select id="heroCity">
+                                                <option value="Chennai">Chennai</option>
+                                                <option value="Bengaluru">Bengaluru</option>
+                                                <option value="Mumbai">Mumbai</option>
+                                                <option value="Delhi">Delhi NCR</option>
+                                                <option value="Hyderabad">Hyderabad</option>
+                                                <option value="Kolkata">Kolkata</option>
+                                                <option value="Pune">Pune</option>
+                                                <option value="Coimbatore">Coimbatore</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-block">
+                                    ⚡ Search Donors Now
+                                </button>
+                            </form>
+
+                            <div class="hero-security-note">
+                                <span class="shield-icon">🛡️</span> Encrypted & Consent-Mediated Contact Flow
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. Statistics Section (Animated Counters) -->
+        <section class="stats-section" id="stats">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon-wrapper">
+                            <span class="stat-icon">👥</span>
+                        </div>
+                        <div class="stat-value" data-target="10000" id="counterDonors">0</div>
+                        <div class="stat-plus">+</div>
+                        <p class="stat-label">Registered Voluntary Donors</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon-wrapper">
+                            <span class="stat-icon">🏥</span>
+                        </div>
+                        <div class="stat-value" data-target="250" id="counterHospitals">0</div>
+                        <div class="stat-plus">+</div>
+                        <p class="stat-label">Connected Partner Hospitals</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon-wrapper">
+                            <span class="stat-icon">📍</span>
+                        </div>
+                        <div class="stat-value" data-target="50" id="counterCities">0</div>
+                        <div class="stat-plus">+</div>
+                        <p class="stat-label">Cities Covered Nationwide</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon-wrapper">
+                            <span class="stat-icon">⏱️</span>
+                        </div>
+                        <div class="stat-value-text">24/7</div>
+                        <p class="stat-label">Emergency Request Support</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. How It Works Section -->
+        <section class="how-it-works-section" id="how-it-works">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-tag">EFFICIENT PROCESS</span>
+                    <h2 class="section-title">How BloodLink Works</h2>
+                    <p class="section-desc">Replacing chaotic social media broadcasts with a structured, verified, and rapid donor discovery network.</p>
+                </div>
+
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-badge">01</div>
+                        <div class="step-icon-box">
+                            <span class="step-icon">📝</span>
+                        </div>
+                        <h3 class="step-title">Register as a Donor</h3>
+                        <p class="step-text">Sign up in 60 seconds with your blood group, city, and neighborhood. Your exact address and raw phone number remain private.</p>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-badge">02</div>
+                        <div class="step-icon-box">
+                            <span class="step-icon">📍</span>
+                        </div>
+                        <h3 class="step-title">Set Blood Group & Area</h3>
+                        <p class="step-text">Specify your blood type and active availability. You have 1-click control to toggle Available or Resting status anytime.</p>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-badge">03</div>
+                        <div class="step-icon-box">
+                            <span class="step-icon">🔍</span>
+                        </div>
+                        <h3 class="step-title">Hospitals Search Nearby</h3>
+                        <p class="step-text">Hospitals and authorized caregivers search for matching donors filtered by blood group compatibility, city, and nearest distance.</p>
+                    </div>
+
+                    <div class="step-card step-card-highlight">
+                        <div class="step-badge">04</div>
+                        <div class="step-icon-box">
+                            <span class="step-icon">🚨</span>
+                        </div>
+                        <h3 class="step-title">Donor Receives Request</h3>
+                        <p class="step-text">Available matching donors receive an instant emergency notification and choose whether to accept and connect safely.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Find Donor Section -->
+        <section class="find-donor-section" id="find-donor">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">DONOR DIRECTORY</span>
+                    <h2 class="section-title">Find Available Blood Donors</h2>
+                    <p class="section-desc">Search registered voluntary donors by blood type and location. Respectful, consent-based contact flow protects donor privacy.</p>
+                </div>
+
+                <!-- Search Form Box -->
+                <div class="search-form-panel glass-panel">
+                    <form id="searchDonorForm" class="donor-filter-form">
+                        <div class="filter-grid">
+                            <div class="form-group">
+                                <label for="filterBloodGroup">Blood Group</label>
+                                <div class="select-wrapper">
+                                    <select id="filterBloodGroup" name="bloodGroup">
+                                        <option value="ALL">All Blood Groups</option>
+                                        <option value="A+">A+ (A Positive)</option>
+                                        <option value="A-">A- (A Negative)</option>
+                                        <option value="B+">B+ (B Positive)</option>
+                                        <option value="B-">B- (B Negative)</option>
+                                        <option value="AB+">AB+ (AB Positive)</option>
+                                        <option value="AB-">AB- (AB Negative)</option>
+                                        <option value="O+">O+ (O Positive)</option>
+                                        <option value="O-">O- (Universal Donor)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="filterCity">City</label>
+                                <div class="input-wrapper">
+                                    <input type="text" id="filterCity" placeholder="e.g. Chennai, Bengaluru, Mumbai" list="citySuggestions">
+                                    <datalist id="citySuggestions">
+                                        <option value="Chennai">
+                                        <option value="Bengaluru">
+                                        <option value="Mumbai">
+                                        <option value="Delhi">
+                                        <option value="Hyderabad">
+                                        <option value="Kolkata">
+                                        <option value="Pune">
+                                        <option value="Coimbatore">
+                                    </datalist>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="filterArea">Area / Neighborhood</label>
+                                <div class="input-wrapper">
+                                    <input type="text" id="filterArea" placeholder="e.g. Velachery, Tambaram, Anna Nagar">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="filterAvailability">Availability</label>
+                                <div class="select-wrapper">
+                                    <select id="filterAvailability" name="availability">
+                                        <option value="ALL">All Statuses</option>
+                                        <option value="Available" selected>🟢 Available Only</option>
+                                        <option value="Not Available">⚫ Not Available</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="search-actions-bar">
+                            <div class="toggle-compat-wrap">
+                                <label class="switch-label">
+                                    <input type="checkbox" id="includeCompatible" checked>
+                                    <span class="slider round"></span>
+                                    <span class="switch-text">Include Compatible Blood Groups (e.g. O- for any request)</span>
+                                </label>
+                            </div>
+                            <div class="btn-search-group">
+                                <button type="button" class="btn btn-ghost" id="resetSearchBtn">Reset Filters</button>
+                                <button type="submit" class="btn btn-primary" id="searchDonorsBtn">
+                                    🔍 Search Donors
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Results Header & Counter -->
+                <div class="results-header-bar">
+                    <div class="results-info">
+                        <h3 class="results-title">Matching Donors</h3>
+                        <span class="results-badge" id="resultsCountBadge">Loading...</span>
+                    </div>
+                    <div class="quick-filter-pills" id="quickBloodPills">
+                        <span class="pill-label">Quick filter:</span>
+                        <button class="pill-btn active" data-group="ALL">All</button>
+                        <button class="pill-btn" data-group="O+">O+</button>
+                        <button class="pill-btn" data-group="O-">O-</button>
+                        <button class="pill-btn" data-group="A+">A+</button>
+                        <button class="pill-btn" data-group="B+">B+</button>
+                        <button class="pill-btn" data-group="AB+">AB+</button>
+                    </div>
+                </div>
+
+                <!-- Donor Cards Grid -->
+                <div class="donor-cards-grid" id="donorCardsGrid">
+                    <!-- Dynamic Donor Cards inserted by script.js -->
+                </div>
+
+                <!-- Empty State Placeholder -->
+                <div class="empty-state-card" id="emptyStateCard" style="display: none;">
+                    <div class="empty-icon">🔍</div>
+                    <h3>No matching donors found</h3>
+                    <p>Try broadening your search criteria or triggering an emergency broadcast to notify registered donors in nearby regions.</p>
+                    <a href="#emergency" class="btn btn-emergency">🚨 Create Emergency Broadcast</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Emergency Blood Request Section (Red Emergency Banner) -->
+        <section class="emergency-section" id="emergency">
+            <div class="container">
+                <div class="emergency-wrapper glass-panel-dark">
+                    <div class="emergency-header">
+                        <div class="emergency-tag-group">
+                            <span class="emergency-live-badge"><span class="beacon-pulse"></span> PRIORITY BROADCAST</span>
+                            <span class="emergency-subtag">Hospitals & Urgent Patients</span>
+                        </div>
+                        <h2 class="emergency-title">Emergency Blood Request</h2>
+                        <p class="emergency-subtitle">Broadcast an immediate blood requirement to all matching voluntary donors in your city. Notifications will be dispatched immediately.</p>
+                    </div>
+
+                    <form id="emergencyRequestForm" class="emergency-form">
+                        <div class="emergency-form-grid">
+                            <div class="form-group">
+                                <label for="emgBloodGroup">Required Blood Group <span class="req">*</span></label>
+                                <div class="select-wrapper select-emergency">
+                                    <select id="emgBloodGroup" required>
+                                        <option value="" disabled selected>Select Blood Group Needed</option>
+                                        <option value="A+">A+ (A Positive)</option>
+                                        <option value="A-">A- (A Negative)</option>
+                                        <option value="B+">B+ (B Positive)</option>
+                                        <option value="B-">B- (B Negative)</option>
+                                        <option value="AB+">AB+ (AB Positive)</option>
+                                        <option value="AB-">AB- (AB Negative)</option>
+                                        <option value="O+">O+ (O Positive)</option>
+                                        <option value="O-">O- (O Negative - Urgent Universal)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="emgHospitalName">Hospital / Medical Center Name <span class="req">*</span></label>
+                                <input type="text" id="emgHospitalName" placeholder="e.g. Apollo Hospitals Greams Rd / AIIMS" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="emgCity">City <span class="req">*</span></label>
+                                <input type="text" id="emgCity" placeholder="e.g. Chennai" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="emgArea">Area / Location <span class="req">*</span></label>
+                                <input type="text" id="emgArea" placeholder="e.g. Greams Road, Thousand Lights" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="emgUnits">Units Required <span class="req">*</span></label>
+                                <input type="number" id="emgUnits" min="1" max="10" value="2" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="emgUrgency">Urgency Level <span class="req">*</span></label>
+                                <div class="select-wrapper select-emergency">
+                                    <select id="emgUrgency" required>
+                                        <option value="Emergency" selected>🚨 Emergency (Immediate / Life Support)</option>
+                                        <option value="Urgent">⚠️ Urgent (Needed within 2-4 Hours)</option>
+                                        <option value="Normal">ℹ️ Normal (Scheduled Surgery / Next 24 Hours)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group full-width">
+                                <label for="emgContactPerson">Attending Doctor / Coordinator & Contact Ref <span class="req">*</span></label>
+                                <input type="text" id="emgContactPerson" placeholder="e.g. Dr. K. Ramesh / Emergency Desk +91 98400-XXXXX" required>
+                            </div>
+                        </div>
+
+                        <div class="emergency-footer">
+                            <div class="emergency-disclaimer-note">
+                                🔒 BloodLink verifies genuine emergency requests. Falsifying medical emergencies is strictly prohibited.
+                            </div>
+                            <button type="submit" class="btn btn-emergency-submit" id="sendEmergencyBtn">
+                                🚨 Send Emergency Request
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- Emergency Results Container (Revealed upon broadcast) -->
+                    <div class="emergency-live-matches" id="emergencyMatchesContainer" style="display: none;">
+                        <div class="live-matches-header">
+                            <div class="live-status-pulse"></div>
+                            <h4>Active Emergency Broadcast Summary</h4>
+                        </div>
+                        <div id="emergencyBroadcastSummary" class="broadcast-summary-card">
+                            <!-- Dynamic summary rendered by JS -->
+                        </div>
+                        <h5 class="nearby-donors-heading">Nearby Matching Donors Alerted:</h5>
+                        <div class="emergency-donors-list" id="emergencyDonorsList">
+                            <!-- Matched donors listed here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Donor Registration Form Section -->
+        <section class="register-section" id="register">
+            <div class="container">
+                <div class="registration-wrapper">
+                    <div class="registration-info">
+                        <span class="section-tag">BE A HERO</span>
+                        <h2 class="section-title">Register as a Voluntary Blood Donor</h2>
+                        <p class="section-desc">One donation can save up to three lives. Join our verified network of compassionate donors ready to help during medical emergencies.</p>
+
+                        <div class="benefits-list">
+                            <div class="benefit-item">
+                                <div class="benefit-icon">🛡️</div>
+                                <div>
+                                    <h4>Privacy Protected</h4>
+                                    <p>Your raw phone number is never exposed publicly. Contact occurs only with your explicit consent.</p>
+                                </div>
+                            </div>
+
+                            <div class="benefit-item">
+                                <div class="benefit-icon">⚡</div>
+                                <div>
+                                    <h4>1-Click Availability Toggle</h4>
+                                    <p>Traveling, unwell, or recently donated? Pause your availability anytime with a single click.</p>
+                                </div>
+                            </div>
+
+                            <div class="benefit-item">
+                                <div class="benefit-icon">🏥</div>
+                                <div>
+                                    <h4>Verified Hospital Matches</h4>
+                                    <p>Help genuine patients at verified local hospitals and blood banks in your neighborhood.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Eligibility Checklist Box -->
+                        <div class="eligibility-box">
+                            <div class="eligibility-title">🩺 General Donor Eligibility</div>
+                            <ul class="eligibility-items">
+                                <li>✓ Age between 18 and 65 years</li>
+                                <li>✓ Body weight minimum 45 kg (100 lbs)</li>
+                                <li>✓ Good general health & no active infections</li>
+                                <li>✓ Minimum 90 days gap since last whole blood donation</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="registration-form-card glass-panel">
+                        <div class="form-card-header">
+                            <h3>Donor Registration</h3>
+                            <p>Fill out the form below to register. Fields marked with <span class="req">*</span> are mandatory.</p>
+                        </div>
+
+                        <form id="donorRegistrationForm" class="donor-form" novalidate>
+                            <div class="form-group">
+                                <label for="regFullName">Full Name <span class="req">*</span></label>
+                                <input type="text" id="regFullName" placeholder="e.g. Arun Kumar" required>
+                                <span class="form-error" id="nameError"></span>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="regBloodGroup">Blood Group <span class="req">*</span></label>
+                                    <div class="select-wrapper">
+                                        <select id="regBloodGroup" required>
+                                            <option value="" disabled selected>Select Blood Group</option>
+                                            <option value="A+">A+ (A Positive)</option>
+                                            <option value="A-">A- (A Negative)</option>
+                                            <option value="B+">B+ (B Positive)</option>
+                                            <option value="B-">B- (B Negative)</option>
+                                            <option value="AB+">AB+ (AB Positive)</option>
+                                            <option value="AB-">AB- (AB Negative)</option>
+                                            <option value="O+">O+ (O Positive)</option>
+                                            <option value="O-">O- (Universal Donor)</option>
+                                        </select>
+                                    </div>
+                                    <span class="form-error" id="bloodGroupError"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="regAge">Age (Years) <span class="req">*</span></label>
+                                    <input type="number" id="regAge" min="18" max="65" placeholder="18 - 65" required>
+                                    <span class="form-error" id="ageError"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="regPhone">Phone Number <span class="req">*</span></label>
+                                    <input type="tel" id="regPhone" placeholder="e.g. 9876543210" required>
+                                    <span class="form-hint">🔒 Kept private & masked</span>
+                                    <span class="form-error" id="phoneError"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="regEmail">Email Address <span class="req">*</span></label>
+                                    <input type="email" id="regEmail" placeholder="e.g. arun@example.com" required>
+                                    <span class="form-error" id="emailError"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="regCity">City <span class="req">*</span></label>
+                                    <input type="text" id="regCity" placeholder="e.g. Chennai" required>
+                                    <span class="form-error" id="cityError"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="regArea">Area / Neighborhood <span class="req">*</span></label>
+                                    <input type="text" id="regArea" placeholder="e.g. Velachery" required>
+                                    <span class="form-error" id="areaError"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="regAvailability">Initial Availability Status <span class="req">*</span></label>
+                                <div class="select-wrapper">
+                                    <select id="regAvailability" required>
+                                        <option value="Available" selected>🟢 Available to be contacted for emergencies</option>
+                                        <option value="Not Available">⚫ Not Available (Resting / Traveling)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group checkbox-group">
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" id="regConsent" required>
+                                    <span class="checkmark"></span>
+                                    <span class="checkbox-label">
+                                        I agree to be contacted for genuine blood donation requests and confirm that I meet the basic voluntary donor eligibility criteria. <span class="req">*</span>
+                                    </span>
+                                </label>
+                                <span class="form-error" id="consentError"></span>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-block btn-lg" id="registerSubmitBtn">
+                                ❤️ Register as Donor
+                            </button>
+
+                            <div class="medical-disclaimer-mini">
+                                <small>⚕️ Note: Actual donation eligibility, screening, testing, and blood collection must always be conducted by certified blood bank doctors.</small>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Donor Availability System Section -->
+        <section class="availability-section" id="availability">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-tag">DONOR CONTROL CENTER</span>
+                    <h2 class="section-title">Donor Hub & Availability Manager</h2>
+                    <p class="section-desc">Manage your donation status instantly. If you are unwell, traveling, or on a 90-day rest period, switch to <strong>Not Available</strong> to pause contact requests.</p>
+                </div>
+
+                <div class="availability-manager-card glass-panel">
+                    <div class="manager-grid">
+                        <div class="donor-selector-col">
+                            <label for="donorSelectDropdown"><strong>Select / Simulate Donor Profile:</strong></label>
+                            <div class="select-wrapper">
+                                <select id="donorSelectDropdown">
+                                    <!-- Populated dynamically with registered donors -->
+                                </select>
+                            </div>
+                            <p class="donor-manage-sub">Select any registered donor or your newly registered profile to update live availability status in LocalStorage.</p>
+                            
+                            <div class="quick-donor-details" id="quickDonorDetails">
+                                <!-- Details populated by JS -->
+                            </div>
+                        </div>
+
+                        <div class="status-toggle-col">
+                            <div class="status-indicator-box" id="currentStatusBox">
+                                <div class="status-dot-large available-dot" id="statusDot"></div>
+                                <div>
+                                    <span class="status-label-small">CURRENT STATUS</span>
+                                    <h3 class="status-heading" id="statusHeading">🟢 Available to Donate</h3>
+                                </div>
+                            </div>
+
+                            <p class="status-description" id="statusDesc">
+                                You will receive emergency alerts when matching patients or hospitals nearby urgently need your blood type.
+                            </p>
+
+                            <div class="toggle-action-box">
+                                <button class="btn btn-toggle-status" id="toggleAvailabilityBtn">
+                                    🔄 Toggle Status to "Not Available"
+                                </button>
+                            </div>
+
+                            <div class="cooldown-pill" id="cooldownPill">
+                                <span class="cooldown-icon">📅</span>
+                                <span>Recommended Safe Gap: <strong>90 Days</strong> between donations</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. Blood Group Section (Educational Cards) -->
+        <section class="blood-groups-section" id="blood-groups">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-tag">MEDICAL KNOWLEDGE</span>
+                    <h2 class="section-title">Blood Group Compatibility Guide</h2>
+                    <p class="section-desc">Understanding ABO and Rh factor compatibility is vital in emergency transfusions. Explore who you can give blood to and receive from.</p>
+                </div>
+
+                <div class="blood-groups-grid">
+                    <!-- O- Universal Donor -->
+                    <div class="blood-card special-card">
+                        <div class="blood-card-header">
+                            <div class="blood-type-badge">O-</div>
+                            <span class="universal-tag">🌟 Universal Red Cell Donor</span>
+                        </div>
+                        <div class="blood-compat-details">
+                            <div class="compat-row">
+                                <span class="compat-label">Can Give To:</span>
+                                <span class="compat-tags"><span class="badge-all">Everyone (All 8 Types)</span></span>
+                            </div>
+                            <div class="compat-row">
+                                <span class="compat-label">Can Receive From:</span>
+                                <span class="compat-tags"><span class="badge-single">O- only</span></span>
+                            </div>
+                        </div>
+                        <div class="blood-card-footer">
+                            <small>Crucial in trauma & emergency rooms when blood type is unknown.</small>
+                        </div>
+                    </div>
+
+                    <!-- O+ -->
+                    <div class="blood-card">
+                        <div class="blood-card-header">
+                            <div class="blood-type-badge">O+</div>
+                            <span class="blood-rarity">~38% Population</span>
+                        </div>
+                        <div class="blood-compat-details">
+                            <div class="compat-row">
+                                <span class="compat-label">Can Give To:</span>
+                                <span class="compat-tags">O+, A+, B+, AB+</span>
+                            </div>
+                            <div class="compat-row">
+                                <span class="compat-label">Can Receive From:</span>
+                                <span class="compat-tags">O+, O-</span>
+                            </div>
+                        </div>
+                        <div class="blood-card-footer">
+                            <small>Most requested blood group in hospitals.</small>
+                        </div>
+                    </div>
+
+                    <!-- A+ -->
+                    <div class="blood-card">
+                        <div class="blood-card-header">
+                            <div class="blood-type-badge">A+</div>
+                            <span class="blood-rarity">~34% Population</span>
+                        </div>
+                        <div class="blood-compat-details">
+                            <div class="compat-row">
+                                <span class="compat-label">Can Give To:</span>
+                                <span class="compat-tags">A+, AB+</span>
+                            </div>
+                            <div class="compat-row">
+                                <span class="compat-label">Can Receive From:</span>
+                                <span class="compat-tags">A+, A-, O+, O-</span>
+                            </div>
+                        </div>
+                        <div class="blood-card-footer">
+                            <small>Second most common blood group globally.</small>
+                        </div>
+                    </div>
+
+                    <!-- A- -->
+                    <div class="blood-card">
+                        <div class="blood-card-header">
+                            <div class="blood-type-badge">A-</div>
+                            <span class="blood-rarity">~6% Population</span>
+                        </div>
+                        <div class="blood-compat-details">
+                            <div class="compat-row">
+                                <span class="compat-label">Can Give To:</span>
+                                <span class="compat-tags">A+, A-, AB+, AB-</span>
+                            </div>
+                            <div class="compat-row">
+                                <span class="compat-label">Can Receive From:</span>
+                                <span class="compat-tags">A-, O-</span>
+                            </div>
+                        </div>
+                        <div class="blood-card-footer">
+                            <small>Valuable for both Rh-positive & negative recipients.</small>
+                        </div>
+                    </div>
+
+                    <!-- B+ -->
+                    <div class="blood-card">
+                        <div class="blood-card-header">
+                            <div class="blood-type-badge">B+</div>
+                            <span class="blood-rarity">~10% Population</span>
+                        </div>
+                        <div class="blood-compat-details">
+                            <div class="compat-row">
+                                <span class="compat-label">Can Give To:</span>
+                                <span class="compat-tags">B+, AB+</span>
+                            </div>
+                            <div class="compat-row">
+                                <span class="compat-label">Can Receive From:</span>
+                                <span class="compat-tags">B+, B-, O+, O-</span>
+                            </div>
+                        </div>
+                        <div class="blood-card-footer">
+                            <small>High demand in South Asian populations.</small>
+                        </div>
+                    </div>
+
+                    <!-- B- -->
+                    <div class="blood-card">
+                        <div class="blood-card-header">
+                            <div class="blood-type-badge">B-</div>
+                            <span class="blood-rarity">~2% Population</span>
+                        </div>
+                        <div class="blood-compat-details">
+                            <div class="compat-row">
+                                <span class="compat-label">Can Give To:</span>
+                                <span class="compat-tags">B+, B-, AB+, AB-</span>
+                            </div>
+                            <div class="compat-row">
+                                <span class="compat-label">Can Receive From:</span>
+                                <span class="compat-tags">B-, O-</span>
+                            </div>
+                        </div>
+                        <div class="blood-card-footer">
+                            <small>Rare blood group; donors are frequently contacted.</small>
+                        </div>
+                    </div>
+
+                    <!-- AB+ Universal Recipient -->
+                    <div class="blood-card special-card">
+                        <div class="blood-card-header">
+                            <div class="blood-type-badge">AB+</div>
+                            <span class="universal-tag">👑 Universal Red Cell Recipient</span>
+                        </div>
+                        <div class="blood-compat-details">
+                            <div class="compat-row">
+                                <span class="compat-label">Can Give To:</span>
+                                <span class="compat-tags">AB+ only</span>
+                            </div>
+                            <div class="compat-row">
+                                <span class="compat-label">Can Receive From:</span>
+                                <span class="compat-tags"><span class="badge-all">Everyone (All 8 Types)</span></span>
+                            </div>
+                        </div>
+                        <div class="blood-card-footer">
+                            <small>Universal plasma donor as well.</small>
+                        </div>
+                    </div>
+
+                    <!-- AB- -->
+                    <div class="blood-card">
+                        <div class="blood-card-header">
+                            <div class="blood-type-badge">AB-</div>
+                            <span class="blood-rarity">~1% (Rarest)</span>
+                        </div>
+                        <div class="blood-compat-details">
+                            <div class="compat-row">
+                                <span class="compat-label">Can Give To:</span>
+                                <span class="compat-tags">AB+, AB-</span>
+                            </div>
+                            <div class="compat-row">
+                                <span class="compat-label">Can Receive From:</span>
+                                <span class="compat-tags">AB-, A-, B-, O-</span>
+                            </div>
+                        </div>
+                        <div class="blood-card-footer">
+                            <small>Rarest blood type; vital in specialized transfusions.</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="medical-advisory-banner">
+                    <div class="advisory-icon">⚠️</div>
+                    <div class="advisory-content">
+                        <strong>Important Medical Notice:</strong>
+                        <p>Blood compatibility and donor eligibility must always be confirmed through laboratory cross-matching by qualified medical professionals and licensed blood banks. Never make clinical transfusion decisions based solely on general compatibility charts.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 10. About Section -->
+        <section class="about-section" id="about">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-tag">OUR MISSION & VALUES</span>
+                    <h2 class="section-title">About BloodLink</h2>
+                    <p class="section-desc">BloodLink was created to bridge the critical gap between emergency blood requirements and willing voluntary donors.</p>
+                </div>
+
+                <div class="about-grid">
+                    <div class="about-card">
+                        <div class="about-icon-box">🎯</div>
+                        <h3>Our Mission</h3>
+                        <p>To eliminate preventable mortality caused by blood shortages by empowering hospitals and families with a reliable, real-time emergency donor connection platform.</p>
+                    </div>
+
+                    <div class="about-card">
+                        <div class="about-icon-box">⚡</div>
+                        <h3>Fast & Targeted Search</h3>
+                        <p>No more sending desperate WhatsApp forward messages or Instagram stories. Search directly by blood group compatibility and neighborhood proximity in seconds.</p>
+                    </div>
+
+                    <div class="about-card">
+                        <div class="about-icon-box">🛡️</div>
+                        <h3>Privacy First Architecture</h3>
+                        <p>We respect donor privacy. Phone numbers and home addresses are never published. Interactions occur through secure, consent-based request verification.</p>
+                    </div>
+
+                    <div class="about-card">
+                        <div class="about-icon-box">🤝</div>
+                        <h3>Community & LifeSavers</h3>
+                        <p>Built on the noble spirit of 100% voluntary, non-remunerated blood donation, fostering a community of everyday heroes ready to respond when needed.</p>
+                    </div>
+                </div>
+
+                <!-- Call To Action Banner Inside About -->
+                <div class="cta-banner glass-panel">
+                    <div class="cta-content">
+                        <h2>Your Registration Could Help Save a Life in an Emergency</h2>
+                        <p>Join thousands of registered donors who have made our communities safer. It takes less than a minute to register.</p>
+                    </div>
+                    <div class="cta-buttons">
+                        <a href="#register" class="btn btn-primary btn-lg">❤️ Become a Donor</a>
+                        <a href="#find-donor" class="btn btn-outline btn-lg">🔍 Search Donors</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 11. Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top-grid">
+                <div class="footer-brand-col">
+                    <a href="#home" class="logo footer-logo">
+                        <span class="logo-icon">🩸</span>
+                        <span class="logo-text">Blood<span class="logo-highlight">Link</span></span>
+                    </a>
+                    <p class="footer-tagline">“Connecting Blood Donors with Those Who Need Them. One Donation Can Save a Life.”</p>
+                    <div class="footer-badges">
+                        <span class="fbadge">🔒 Privacy Protected</span>
+                        <span class="fbadge">❤️ 100% Voluntary</span>
+                        <span class="fbadge">⚡ 24/7 Triage</span>
+                    </div>
+                </div>
+
+                <div class="footer-links-col">
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#find-donor">Find Donors</a></li>
+                        <li><a href="#register">Register as Donor</a></li>
+                        <li><a href="#emergency">Emergency Request</a></li>
+                        <li><a href="#availability">Donor Hub</a></li>
+                        <li><a href="#blood-groups">Blood Groups</a></li>
+                        <li><a href="#about">About BloodLink</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact-col">
+                    <h4 class="footer-heading">Emergency Coordination</h4>
+                    <p class="footer-contact-text">National Blood Helpline / Partner Desks available for emergency triage coordination.</p>
+                    <div class="helpline-number">
+                        <span class="phone-icon">📞</span>
+                        <div>
+                            <strong>1800-BLOOD-LINK</strong>
+                            <small>Toll Free 24/7 Emergency Support</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mandatory Disclaimer Box -->
+            <div class="footer-disclaimer-box">
+                <h4>⚠️ Medical & Platform Disclaimer</h4>
+                <p>
+                    BloodLink is a technology platform designed to help connect voluntary blood donors with hospitals and people requesting assistance during emergencies. Blood donation eligibility, blood collection, medical testing, cross-matching, storage, and transfusion must always be handled by qualified medical professionals and authorized blood banks according to applicable laws and medical standards. BloodLink does not store, sell, or collect blood products.
+                </p>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 BloodLink. All Rights Reserved. Designed for voluntary emergency life-saving.</p>
+                <div class="footer-extra-links">
+                    <a href="#about">Terms of Service</a> • 
+                    <a href="#about">Privacy Policy</a> • 
+                    <a href="#about">Report Abuse</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Safe Contact Request Modal -->
+    <div class="modal-backdrop" id="contactModalBackdrop" style="display: none;">
+        <div class="modal-dialog glass-panel" role="dialog" aria-labelledby="modalTitle" aria-modal="true">
+            <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close modal">&times;</button>
+            <div class="modal-header">
+                <div class="modal-icon-wrap">📩</div>
+                <div>
+                    <h3 id="modalTitle">Request Contact with Donor</h3>
+                    <p class="modal-subtitle">Secure & Mediated Privacy-First Request</p>
+                </div>
+            </div>
+
+            <div class="modal-body" id="modalBody">
+                <div class="donor-target-card" id="modalDonorPreview">
+                    <!-- Populated dynamically -->
+                </div>
+
+                <form id="contactRequestForm" class="modal-form">
+                    <input type="hidden" id="modalDonorId" value="">
+                    
+                    <div class="form-group">
+                        <label for="contactRequesterName">Your Name / Hospital Coordinator <span class="req">*</span></label>
+                        <input type="text" id="contactRequesterName" placeholder="e.g. Dr. Rajesh or Patient Attendant Priya" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contactRequesterPhone">Your Verified Contact Phone <span class="req">*</span></label>
+                        <input type="tel" id="contactRequesterPhone" placeholder="e.g. 9840123456" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contactHospitalName">Hospital / Medical Center & Ward <span class="req">*</span></label>
+                        <input type="text" id="contactHospitalName" placeholder="e.g. Apollo Hospital, Greams Rd, ICU-3" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contactReason">Brief Emergency Details & Patient Condition <span class="req">*</span></label>
+                        <textarea id="contactReason" rows="3" placeholder="e.g. Emergency bypass surgery scheduled in 3 hours. 2 units O+ urgently needed." required></textarea>
+                    </div>
+
+                    <div class="modal-actions">
+                        <button type="button" class="btn btn-ghost" id="modalCancelBtn">Cancel</button>
+                        <button type="submit" class="btn btn-primary" id="modalSubmitBtn">
+                            📨 Send Secure Contact Request
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTopBtn" title="Back to Top" aria-label="Scroll back to top">
+        ↑
+    </button>
+
+    <!-- Dynamic Toast Notification Container -->
+    <div class="toast-container" id="toastContainer" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- Vanilla JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
